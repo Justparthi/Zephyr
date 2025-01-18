@@ -1,0 +1,37 @@
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    border: 1px solid transparent;
+  }
+  
+  .button.primary {
+    background-color: #2563eb;
+    color: white;
+  }
+  
+  .button.primary:hover {
+    background-color: #1d4ed8;
+  }
+  
+  .button.default {
+    background-color: white;
+    color: #374151;
+    border-color: #d1d5db;
+  }
+  
+  .button.default:hover {
+    background-color: #f9fafb;
+  }
+  
+  .button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }

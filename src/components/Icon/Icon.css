@@ -1,0 +1,7 @@
+/* components/Icon/Icon.css */
+.icon {
+    width: 1rem;
+    height: 1rem;
+    display: inline-block;
+    vertical-align: middle;
+  }
