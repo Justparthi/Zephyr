@@ -1,7 +1,20 @@
-/* components/Icon/Icon.css */
 .icon {
-    width: 1rem;
-    height: 1rem;
-    display: inline-block;
-    vertical-align: middle;
-  }
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+button .icon {
+  margin-right: 0.5rem;
+}
+
+.control-button .icon {
+  width: 16px;
+  height: 16px;
+  margin-right: 0;
+}
+
+.button-group .icon {
+  margin-right: 0.5rem;
+}
