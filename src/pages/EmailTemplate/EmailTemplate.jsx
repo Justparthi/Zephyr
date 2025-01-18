@@ -19,7 +19,7 @@ const EmailTemplate = () => {
     const [sections, setSections] = useState([]);
     const [previewHtml, setPreviewHtml] = useState("");
     const [showPreview, setShowPreview] = useState(false);
-  
+    const [showHtmlPreview, setShowHtmlPreview] = useState(false);
 
     const generateHTML = () => {
         const sectionsHtml = sections.map(section => {
@@ -193,6 +193,20 @@ const EmailTemplate = () => {
     </div>
   );
 
+  const toggleHtmlPreview = () => {
+    setShowHtmlPreview(!showHtmlPreview);
+    if (!showHtmlPreview) {
+      setShowPreview(false); // Close regular preview when showing HTML preview
+    }
+  };
+
+  const togglePreview = () => {
+    setShowPreview(!showPreview);
+    if (!showPreview) {
+      setShowHtmlPreview(false); // Close HTML preview when showing regular preview
+      generatePreview();
+    }
+  };
 
   return (
     <div className="editor-container">
@@ -253,12 +267,15 @@ const EmailTemplate = () => {
                 </div>
               ))}
             </div>
-
             {sections.length > 0 && (
               <div className="button-group">
-                <Button onClick={generatePreview}>
+                <Button onClick={togglePreview} variant={showPreview ? "secondary" : "default"}>
                   <Icon name="eye" />
-                  Preview
+                  Visual Preview
+                </Button>
+                <Button onClick={toggleHtmlPreview} variant={showHtmlPreview ? "secondary" : "default"}>
+                  <Icon name="code" />
+                  HTML Preview
                 </Button>
               </div>
             )}
@@ -267,7 +284,7 @@ const EmailTemplate = () => {
               <div className="preview-section">
                 <Card>
                   <CardHeader>
-                    <CardTitle>Preview</CardTitle>
+                    <CardTitle>Visual Preview</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <div 
@@ -278,13 +295,64 @@ const EmailTemplate = () => {
                 </Card>
               </div>
             )}
+
+            {showHtmlPreview && (
+              <div className="preview-section">
+                <Card>
+                  <CardHeader>
+                    <CardTitle>HTML Preview</CardTitle>
+                    <Button 
+                      onClick={() => {
+                        navigator.clipboard.writeText(generateHTML());
+                      }}
+                      variant="default"
+                      className="copy-button"
+                    >
+                      <Icon name="copy" />
+                      Copy HTML
+                    </Button>
+                  </CardHeader>
+                  <CardContent>
+                    <pre className="html-preview">
+                      <code>{generateHTML()}</code>
+                    </pre>
+                  </CardContent>
+                </Card>
+              </div>
+            )}
           </div>
         </CardContent>
       </Card>
+
+      <style jsx>{`
+        .button-group {
+          display: flex;
+          gap: 1rem;
+          margin-top: 1rem;
+        }
+        
+        .html-preview {
+          background: #f5f5f5;
+          padding: 1rem;
+          border-radius: 0.5rem;
+          overflow-x: auto;
+          white-space: pre-wrap;
+          font-family: monospace;
+          font-size: 0.875rem;
+          line-height: 1.5;
+        }
+
+        .copy-button {
+          margin-left: auto;
+        }
+
+        .preview-section {
+          margin-top: 1.5rem;
+        }
+      `}</style>
     </div>
   );
 };
-
 export default EmailTemplate;
 
 
