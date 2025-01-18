@@ -1,64 +1,124 @@
-/* components/EmailEditor/EmailTemplateEditor.css */
+/* components/EmailTemplate/EmailTemplate.css */
 .editor-container {
-    max-width: 64rem;
-    margin: 0 auto;
-    padding: 1.5rem;
+  max-width: 64rem;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+.editor-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.add-section-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.sections-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.section-item {
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  background-color: #fff;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.section-type {
+  font-weight: 500;
+  color: #374151;
+}
+
+.section-controls {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.control-button {
+  padding: 0.25rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.25rem;
+  background: none;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.control-button:hover {
+  background-color: #f3f4f6;
+}
+
+.control-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.control-button.delete:hover {
+  background-color: #fee2e2;
+  border-color: #fecaca;
+  color: #dc2626;
+}
+
+.section-content {
+  margin-top: 1rem;
+}
+
+.image-upload {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.preview-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  border: 1px solid #e5e7eb;
+}
+
+.button-group {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.preview-section {
+  margin-top: 2rem;
+}
+
+.preview-content {
+  max-width: 100%;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .editor-container {
+    padding: 1rem;
   }
-  
-  .editor-content {
-    display: flex;
+
+  .add-section-buttons {
     flex-direction: column;
-    gap: 1.5rem;
   }
-  
-  .form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-  
-  .image-upload {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-  
-  .preview-image {
-    max-width: 100%;
-    height: auto;
-    border-radius: 0.5rem;
-    border: 1px solid #e5e7eb;
-  }
-  
+
   .button-group {
-    display: flex;
-    gap: 1rem;
+    flex-direction: column;
   }
-  
-  .preview-section {
-    margin-top: 2rem;
+
+  .section-controls {
+    flex-wrap: wrap;
   }
-  
-  .preview-content {
-    max-width: 100%;
-  }
-  
-  .icon {
-    width: 1rem;
-    height: 1rem;
-  }
-  
-  /* Responsive adjustments */
-  @media (max-width: 640px) {
-    .editor-container {
-      padding: 1rem;
-    }
-  
-    .button-group {
-      flex-direction: column;
-    }
-  
-    .button {
-      width: 100%;
-    }
-  }
+}
