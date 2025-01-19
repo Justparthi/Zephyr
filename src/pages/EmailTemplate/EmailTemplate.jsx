@@ -8,6 +8,7 @@ import Textarea from '../../components/TextArea/TextArea.jsx';
 import Icon from '../../components/Icon/Icon.jsx';
 import LinkButton from '../../components/LinkBtn/LinkButton.jsx';
 import './EmailTemplate.css';
+import SaveTemplateButton from '../../components/SaveTemplate/SaveTemplateButton.jsx';
 
 
 const SECTION_TYPES = {
@@ -173,6 +174,29 @@ const EmailTemplate = () => {
     setShowPreview(true);
 };
 
+const handleSaveTemplate = async (templateData) => {
+  try {
+    // Here you can implement your save logic
+    // For example, saving to localStorage:
+    const savedTemplates = JSON.parse(localStorage.getItem('emailTemplates') || '[]');
+    savedTemplates.push(templateData);
+    localStorage.setItem('emailTemplates', JSON.stringify(savedTemplates));
+    
+    // Or you could make an API call:
+    // await fetch('/api/templates', {
+    //   method: 'POST',
+    //   headers: { 'Content-Type': 'application/json' },
+    //   body: JSON.stringify(templateData),
+    // });
+    
+    // Show success message (you can implement your own notification system)
+    alert('Template saved successfully!');
+  } catch (error) {
+    console.error('Error saving template:', error);
+    alert('Error saving template');
+  }
+};
+
   const renderSection = (section) => {
     switch (section.type) {
       case SECTION_TYPES.TITLE:
@@ -285,32 +309,59 @@ const EmailTemplate = () => {
   };
 
   return (
-    <div className="editor-container">
-      <Card>
-        <CardHeader>
-          <CardTitle>Dynamic Email Template Editor</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="editor-content">
-            <div className="add-section-buttons">
-              <Button onClick={() => addSection(SECTION_TYPES.TITLE)} variant="default">
+    <div className="email-editor-layout">
+      {/* Sidebar */}
+      <div className="sidebar">
+        <Card className="sidebar-card">
+          <CardHeader>
+            <CardTitle>Add Elements</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="sidebar-buttons">
+              <Button onClick={() => addSection(SECTION_TYPES.TITLE)} variant="default" className="sidebar-button">
                 <Icon name="plus" />
                 Add Title
               </Button>
-              <Button onClick={() => addSection(SECTION_TYPES.IMAGE)} variant="default">
+              <Button onClick={() => addSection(SECTION_TYPES.IMAGE)} variant="default" className="sidebar-button">
                 <Icon name="image" />
                 Add Image
               </Button>
-              <Button onClick={() => addSection(SECTION_TYPES.TEXT)} variant="default">
+              <Button onClick={() => addSection(SECTION_TYPES.TEXT)} variant="default" className="sidebar-button">
                 <Icon name="type" />
                 Add Text
               </Button>
-              <Button onClick={() => addSection(SECTION_TYPES.LINK)} variant="default">
-    <Icon name="link" />
-    Add Link Button
-  </Button>
+              <Button onClick={() => addSection(SECTION_TYPES.LINK)} variant="default" className="sidebar-button">
+                <Icon name="link" />
+                Add Link Button
+              </Button>
+              <Button onClick={togglePreview} variant={showPreview ? "secondary" : "default"}>
+                <Icon name="eye" />
+                Visual Preview
+              </Button>
+              <Button onClick={toggleHtmlPreview} variant={showHtmlPreview ? "secondary" : "default"}>
+                <Icon name="code" />
+                HTML Preview
+              </Button>
             </div>
+          </CardContent>
+        </Card>
+      </div>
 
+      {/* Main Content */}
+      <div className="main-content">
+        <Card className="content-card">
+          <CardHeader>
+            <CardTitle>Email Template Editor</CardTitle>
+            <div className="preview-controls">
+  <SaveTemplateButton 
+    sections={sections}
+    onSave={handleSaveTemplate}
+  />
+              
+            </div>
+          </CardHeader>
+          <CardContent>
+            {/* Sections List */}
             <div className="sections-list">
               {sections.map((section, index) => (
                 <div key={section.id} className="section-item">
@@ -347,19 +398,8 @@ const EmailTemplate = () => {
                 </div>
               ))}
             </div>
-            {sections.length > 0 && (
-              <div className="button-group">
-                <Button onClick={togglePreview} variant={showPreview ? "secondary" : "default"}>
-                  <Icon name="eye" />
-                  Visual Preview
-                </Button>
-                <Button onClick={toggleHtmlPreview} variant={showHtmlPreview ? "secondary" : "default"}>
-                  <Icon name="code" />
-                  HTML Preview
-                </Button>
-              </div>
-            )}
 
+            {/* Preview Sections */}
             {showPreview && (
               <div className="preview-section">
                 <Card>
@@ -382,9 +422,7 @@ const EmailTemplate = () => {
                   <CardHeader>
                     <CardTitle>HTML Preview</CardTitle>
                     <Button 
-                      onClick={() => {
-                        navigator.clipboard.writeText(generateHTML());
-                      }}
+                      onClick={() => navigator.clipboard.writeText(generateHTML())}
                       variant="default"
                       className="copy-button"
                     >
@@ -400,36 +438,9 @@ const EmailTemplate = () => {
                 </Card>
               </div>
             )}
-          </div>
-        </CardContent>
-      </Card>
-
-      <style jsx>{`
-        .button-group {
-          display: flex;
-          gap: 1rem;
-          margin-top: 1rem;
-        }
-        
-        .html-preview {
-          background: #f5f5f5;
-          padding: 1rem;
-          border-radius: 0.5rem;
-          overflow-x: auto;
-          white-space: pre-wrap;
-          font-family: monospace;
-          font-size: 0.875rem;
-          line-height: 1.5;
-        }
-
-        .copy-button {
-          margin-left: auto;
-        }
-
-        .preview-section {
-          margin-top: 1.5rem;
-        }
-      `}</style>
+          </CardContent>
+        </Card>
+      </div>
     </div>
   );
 };
