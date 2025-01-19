@@ -1,0 +1,57 @@
+/* components/LinkButton/LinkButton.css */
+.link-button-container {
+  width: 100%;
+  margin: 1rem 0;
+}
+
+.link-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  background-color: #f9fafb;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid #e5e7eb;
+}
+
+.link-input {
+  width: 100%;
+}
+
+.link-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.link-submit,
+.link-cancel {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.link-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.link-button:hover {
+  background-color: #f3f4f6;
+}
+
+/* Response states */
+.link-form.loading {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.link-form.error {
+  border-color: #ef4444;
+}
+
+.link-form.success {
+  border-color: #22c55e;
+}

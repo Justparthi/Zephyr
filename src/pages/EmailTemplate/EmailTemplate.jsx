@@ -6,12 +6,15 @@ import Input from '../../components/Input/Input.jsx';
 import Label from '../../components/Label/Label.jsx';
 import Textarea from '../../components/TextArea/TextArea.jsx';
 import Icon from '../../components/Icon/Icon.jsx';
+import LinkButton from '../../components/LinkBtn/LinkButton.jsx';
 import './EmailTemplate.css';
+
 
 const SECTION_TYPES = {
   TITLE: 'title',
   IMAGE: 'image',
-  TEXT: 'text'
+  TEXT: 'text',
+  LINK: 'link'
 };
 
 const EmailTemplate = () => {
@@ -22,48 +25,62 @@ const EmailTemplate = () => {
     const [showHtmlPreview, setShowHtmlPreview] = useState(false);
 
     const generateHTML = () => {
-        const sectionsHtml = sections.map(section => {
-          switch (section.type) {
-            case SECTION_TYPES.TITLE:
-              return `<h1 style="font-family: Arial, sans-serif; color: #333; margin-bottom: 1rem;">${section.content}</h1>`;
-            case SECTION_TYPES.IMAGE:
-              return `<img src="${section.imageUrl}" alt="Email Image" style="max-width: 100%; height: auto; margin: 1rem 0;"/>`;
-            case SECTION_TYPES.TEXT:
-              return `<div style="font-family: Arial, sans-serif; color: #666; line-height: 1.6; margin-bottom: 1rem;">${section.content}</div>`;
-            default:
-              return '';
-          }
-        }).join('\n');
-    
-        return `
-    <!DOCTYPE html>
-    <html>
-    <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Email Template</title>
-    </head>
-    <body style="margin: 0; padding: 0; background-color: #f4f4f4;">
-      <table cellpadding="0" cellspacing="0" style="max-width: 600px; width: 100%; margin: 0 auto; background-color: #ffffff; padding: 20px;">
-        <tr>
-          <td>
-            ${sectionsHtml}
-          </td>
-        </tr>
-      </table>
-    </body>
-    </html>`;
-      };
-
-      
-  const addSection = (type) => {
-    setSections(prev => [...prev, {
-      id: Date.now(),
-      type,
-      content: '',
-      imageUrl: type === SECTION_TYPES.IMAGE ? '/api/placeholder/600/300' : ''
-    }]);
+      const sectionsHtml = sections.map(section => {
+        switch (section.type) {
+          case SECTION_TYPES.TITLE:
+            return `<h1 style="font-family: Arial, sans-serif; color: #333; margin-bottom: 1rem;">${section.content}</h1>`;
+          case SECTION_TYPES.IMAGE:
+            return `<img src="${section.imageUrl}" alt="Email Image" style="max-width: 100%; height: auto; margin: 1rem 0;"/>`;
+          case SECTION_TYPES.TEXT:
+            return `<div style="font-family: Arial, sans-serif; color: #666; line-height: 1.6; margin-bottom: 1rem;">${section.content}</div>`;
+          case SECTION_TYPES.LINK:
+            return `<table cellpadding="0" cellspacing="0" style="margin: 1rem 0;">
+    <tr>
+      <td>
+        <a href="${formatURL(section.url)}" 
+           style="display: inline-block; padding: 10px 20px; background-color: #007bff; 
+           color: #ffffff; text-decoration: none; border-radius: 4px; 
+           font-family: Arial, sans-serif;"
+           target="_blank" rel="noopener noreferrer">
+          ${section.content}
+        </a>
+      </td>
+    </tr>
+  </table>`;
+          default:
+            return '';
+        }
+      }).join('\n');
+  
+      return `
+  <!DOCTYPE html>
+  <html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Template</title>
+  </head>
+  <body style="margin: 0; padding: 0; background-color: #f4f4f4;">
+    <table cellpadding="0" cellspacing="0" style="max-width: 600px; width: 100%; margin: 0 auto; background-color: #ffffff; padding: 20px;">
+      <tr>
+        <td>
+          ${sectionsHtml}
+        </td>
+      </tr>
+    </table>
+  </body>
+  </html>`;
   };
+      
+      const addSection = (type) => {
+        setSections(prev => [...prev, {
+          id: Date.now(),
+          type,
+          content: '',
+          imageUrl: type === SECTION_TYPES.IMAGE ? '/api/placeholder/600/300' : '',
+          url: type === SECTION_TYPES.LINK ? '' : undefined
+        }]);
+      };
 
   const removeSection = (id) => {
     setSections(prev => prev.filter(section => section.id !== id));
@@ -89,9 +106,27 @@ const EmailTemplate = () => {
   };
 
   const updateSectionContent = (id, value, field = 'content') => {
+    if (field === 'url') {
+      // Format URL if it doesn't start with a protocol
+      value = formatURL(value);
+    }
     setSections(prev => prev.map(section => 
       section.id === id ? { ...section, [field]: value } : section
     ));
+  };
+  
+  const formatURL = (url) => {
+    if (!url) return '';
+    // Check if URL already has a protocol
+    if (url.match(/^https?:\/\//i)) {
+      return url;
+    }
+    // Check if URL starts with www.
+    if (url.startsWith('www.')) {
+      return `https://${url}`;
+    }
+    // Add both https:// and www. if neither is present
+    return `https://www.${url}`;
   };
 
   const handleImageUpload = (id, e) => {
@@ -111,6 +146,20 @@ const EmailTemplate = () => {
           return `<img src="${section.imageUrl}" alt="Email Image" style="max-width: 100%; height: auto; margin: 1rem 0;"/>`;
         case SECTION_TYPES.TEXT:
           return `<div style="font-family: Arial, sans-serif; color: #666; line-height: 1.6;">${section.content}</div>`;
+        case SECTION_TYPES.LINK:
+  return `<table cellpadding="0" cellspacing="0" style="margin: 1rem 0;">
+    <tr>
+      <td>
+        <a href="${formatURL(section.url)}" 
+           style="display: inline-block; padding: 10px 20px; background-color: #007bff; 
+           color: #ffffff; text-decoration: none; border-radius: 4px; 
+           font-family: Arial, sans-serif;"
+           target="_blank" rel="noopener noreferrer">
+          ${section.content}
+        </a>
+      </td>
+    </tr>
+  </table>`;
         default:
           return '';
       }
@@ -122,7 +171,7 @@ const EmailTemplate = () => {
       </div>
     `);
     setShowPreview(true);
-  };
+};
 
   const renderSection = (section) => {
     switch (section.type) {
@@ -161,6 +210,33 @@ const EmailTemplate = () => {
             rows={4}
           />
         );
+
+        case SECTION_TYPES.LINK:
+  return (
+    <div className="link-inputs">
+      <Input
+        value={section.content}
+        onChange={(e) => updateSectionContent(section.id, e.target.value)}
+        placeholder="Enter button text"
+        className="mb-2"
+      />
+      <Input
+        value={section.url || ''}
+        onChange={(e) => updateSectionContent(section.id, e.target.value, 'url')}
+        placeholder="Enter URL (e.g., example.com)"
+      />
+      {section.url && (
+        <Button
+          onClick={() => window.open(formatURL(section.url), '_blank', 'noopener,noreferrer')}
+          variant="default"
+          className="mt-2"
+        >
+          <Icon name="external-link" />
+          Test Link
+        </Button>
+      )}
+    </div>
+  );
       default:
         return null;
     }
@@ -229,6 +305,10 @@ const EmailTemplate = () => {
                 <Icon name="type" />
                 Add Text
               </Button>
+              <Button onClick={() => addSection(SECTION_TYPES.LINK)} variant="default">
+    <Icon name="link" />
+    Add Link Button
+  </Button>
             </div>
 
             <div className="sections-list">
