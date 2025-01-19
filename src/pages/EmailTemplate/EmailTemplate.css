@@ -63,36 +63,7 @@
   margin: 1rem 0;
 }
 
-.image-upload {
-  width: 100%;
-  position: relative;
-}
 
-.image-upload img {
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  object-fit: cover;
-  display: block;
-  border-radius: 0.375rem; /* 6px */
-}
-
-.image-upload-placeholder {
-  width: 100%;
-  min-height: 200px;
-  border: 2px dashed #e5e7eb;
-  border-radius: 0.375rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #f9fafb;
-  cursor: pointer;
-  transition: border-color 0.2s ease;
-}
-
-.image-upload-placeholder:hover {
-  border-color: #d1d5db;
-}
 
 /* Optional: Add a container for better control */
 .preview-image-container {
