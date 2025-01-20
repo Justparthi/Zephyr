@@ -1,5 +1,4 @@
 // components/EmailTemplate/EmailTemplate.js
-import React, { useState, useEffect } from 'react';
 import Card, { CardHeader, CardTitle, CardContent } from '../../components/Card/Card.jsx';
 import Button from '../../components/Button/Button.jsx';
 import Input from '../../components/Input/Input.jsx';
@@ -9,7 +8,8 @@ import Icon from '../../components/Icon/Icon.jsx';
 import LinkButton from '../../components/LinkBtn/LinkButton.jsx';
 import './EmailTemplate.css';
 import SaveTemplateButton from '../../components/SaveTemplate/SaveTemplateButton.jsx';
-
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const SECTION_TYPES = {
   TITLE: 'title',
@@ -24,6 +24,8 @@ const EmailTemplate = () => {
     const [previewHtml, setPreviewHtml] = useState("");
     const [showPreview, setShowPreview] = useState(false);
     const [showHtmlPreview, setShowHtmlPreview] = useState(false);
+    const [view, setView] = useState('editor');
+     const navigate = useNavigate();
 
     const generateHTML = () => {
       const sectionsHtml = sections.map(section => {
@@ -52,7 +54,7 @@ const EmailTemplate = () => {
             return '';
         }
       }).join('\n');
-  
+
       return `
   <!DOCTYPE html>
   <html>
@@ -72,7 +74,12 @@ const EmailTemplate = () => {
   </body>
   </html>`;
   };
-      
+
+  const loadTemplate = (template) => {
+    setSections(template.sections);
+    setView('editor');
+  };
+
       const addSection = (type) => {
         setSections(prev => [...prev, {
           id: Date.now(),
@@ -101,7 +108,7 @@ const EmailTemplate = () => {
       const swapIndex = direction === 'up' ? index - 1 : index + 1;
       [newSections[index], newSections[swapIndex]] = 
       [newSections[swapIndex], newSections[index]];
-      
+
       return newSections;
     });
   };
@@ -115,7 +122,7 @@ const EmailTemplate = () => {
       section.id === id ? { ...section, [field]: value } : section
     ));
   };
-  
+
   const formatURL = (url) => {
     if (!url) return '';
     // Check if URL already has a protocol
@@ -137,6 +144,17 @@ const EmailTemplate = () => {
       updateSectionContent(id, imageUrl, 'imageUrl');
     }
   };
+
+  useEffect(() => {
+    // Check for a template to edit when component mounts
+    const editingTemplate = localStorage.getItem('editingTemplate');
+    if (editingTemplate) {
+      const template = JSON.parse(editingTemplate);
+      setSections(template.sections);
+      // Clear the editing template from storage
+      localStorage.removeItem('editingTemplate');
+    }
+  }, []);
 
   const generatePreview = () => {
     const html = sections.map(section => {
@@ -176,21 +194,29 @@ const EmailTemplate = () => {
 
 const handleSaveTemplate = async (templateData) => {
   try {
-    // Here you can implement your save logic
-    // For example, saving to localStorage:
     const savedTemplates = JSON.parse(localStorage.getItem('emailTemplates') || '[]');
-    savedTemplates.push(templateData);
+
+    // Check if we're editing an existing template
+    const editingTemplate = localStorage.getItem('editingTemplate');
+    if (editingTemplate) {
+      // Find and update the existing template
+      const editTemplate = JSON.parse(editingTemplate);
+      const templateIndex = savedTemplates.findIndex(
+        template => JSON.stringify(template) === JSON.stringify(editTemplate)
+      );
+
+      if (templateIndex !== -1) {
+        savedTemplates[templateIndex] = templateData;
+      } else {
+        savedTemplates.push(templateData);
+      }
+    } else {
+      // Add new template
+      savedTemplates.push(templateData);
+    }
+
     localStorage.setItem('emailTemplates', JSON.stringify(savedTemplates));
-    
-    // Or you could make an API call:
-    // await fetch('/api/templates', {
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify(templateData),
-    // });
-    
-    // Show success message (you can implement your own notification system)
-    alert('Template saved successfully!');
+    navigate('/saved');
   } catch (error) {
     console.error('Error saving template:', error);
     alert('Error saving template');
@@ -342,6 +368,7 @@ const handleSaveTemplate = async (templateData) => {
                 <Icon name="code" />
                 HTML Preview
               </Button>
+
             </div>
           </CardContent>
         </Card>
@@ -357,8 +384,9 @@ const handleSaveTemplate = async (templateData) => {
     sections={sections}
     onSave={handleSaveTemplate}
   />
-              
+
             </div>
+
           </CardHeader>
           <CardContent>
             {/* Sections List */}
@@ -445,6 +473,3 @@ const handleSaveTemplate = async (templateData) => {
   );
 };
 export default EmailTemplate;
-
-
-
