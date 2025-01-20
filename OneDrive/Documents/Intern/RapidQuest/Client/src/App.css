@@ -1,0 +1,71 @@
+/* App.css */
+.app-container {
+  min-height: 100vh;
+  background-color: #f9fafb;
+}
+
+.navigation {
+  border-bottom: 1px solid #e5e7eb;
+  padding: 1rem;
+  background-color: white;
+}
+
+.nav-container {
+  max-width: 64rem; /* 1024px */
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.nav-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.375rem;
+  background-color: white;
+  color: #374151;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.button:hover {
+  background-color: #f3f4f6;
+}
+
+.button svg {
+  width: 1rem;
+  height: 1rem;
+  margin-right: 0.5rem;
+}
+
+.main-content {
+  padding: 1rem;
+}
+
+/* Make the app responsive */
+@media (max-width: 640px) {
+  .nav-container {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .nav-buttons {
+    width: 100%;
+    justify-content: center;
+  }
+}
