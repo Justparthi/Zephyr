@@ -1,13 +1,15 @@
-/* Layout */
+/* Main Layout */
 .email-editor-layout {
   display: grid;
-  grid-template-columns: 250px 1fr;
+  grid-template-columns: 250px 1fr 1fr;
   gap: 1.5rem;
-  min-height: 100vh;
   padding: 1.5rem;
+  height: calc(100vh - 3rem);
+  max-width: 100vw;
+  overflow: hidden;
 }
 
-/* Sidebar Styles */
+/* Sidebar */
 .sidebar {
   position: sticky;
   top: 1.5rem;
@@ -25,54 +27,64 @@
   gap: 0.75rem;
 }
 
-
-
 .sidebar-button {
   width: 100%;
   justify-content: flex-start;
   gap: 0.5rem;
 }
 
+/* Editor Section */
+.editor-section {
+  height: calc(100vh - 3rem);
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
 
-/* Main Content Styles */
-.main-content {
-  min-width: 0; /* Prevents overflow */
+.editor-section::-webkit-scrollbar {
+  width: 8px;
+}
+
+.editor-section::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.editor-section::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
 }
 
 .content-card {
   background-color: white;
   border-radius: 0.5rem;
+  height: fit-content;
 }
 
-.preview-controls {
+/* Preview Section */
+.preview-section {
+  height: calc(100vh - 3rem);
+  overflow-y: auto;
+  padding-right: 0.5rem;
   display: flex;
-  gap: 0.75rem;
-  margin-top: 0.5rem;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
-/* Preview Section Styles */
-.preview-content {
-  padding: 1rem;
-  border: 1px solid #e5e7eb;
-  border-radius: 0.5rem;
-  min-height: 200px;
+.preview-section::-webkit-scrollbar {
+  width: 8px;
 }
 
-.preview-content img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-  margin: 1rem 0;
+.preview-section::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
 }
 
-
-
-/* Optional: Add a container for better control */
-.preview-image-container {
-  width: 100%;
-  overflow: hidden;
+.preview-section::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
 }
-/* Sections List Styles */
+
+/* Section Items */
 .sections-list {
   display: flex;
   flex-direction: column;
@@ -93,7 +105,57 @@
   margin-bottom: 0.75rem;
 }
 
+.section-type {
+  font-weight: 500;
+  color: #4b5563;
+}
 
+.section-controls {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.control-button {
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+  border: 1px solid #e5e7eb;
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.control-button:hover {
+  background-color: #f3f4f6;
+}
+
+.control-button.delete:hover {
+  background-color: #fee2e2;
+  border-color: #fecaca;
+}
+
+/* Preview Content */
+.preview-content {
+  padding: 1rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  min-height: 200px;
+  background-color: white;
+}
+
+.html-preview {
+  background: #f5f5f5;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  font-family: monospace;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+/* Image Upload */
 .image-upload {
   width: 100%;
   margin: 1rem 0;
@@ -125,54 +187,20 @@
   background-color: #f1f5f9;
 }
 
-.section-type {
-  font-weight: 500;
-  color: #4b5563;
-}
-
-.section-controls {
+/* Link Inputs */
+.link-inputs {
   display: flex;
-  gap: 0.5rem;
+  flex-direction: column;
+  gap: 0.75rem;
 }
 
-.control-button {
-  padding: 0.25rem;
-  border-radius: 0.25rem;
-  border: 1px solid #e5e7eb;
-  background: transparent;
-  cursor: pointer;
+/* Additional Utility Classes */
+.mb-2 {
+  margin-bottom: 0.5rem;
 }
 
-.control-button:hover {
-  background-color: #f3f4f6;
-}
-
-.control-button.delete:hover {
-  background-color: #fee2e2;
-  border-color: #fecaca;
-}
-
-/* Preview Sections */
-.preview-section {
-  margin-top: 1.5rem;
-}
-
-.preview-content {
-  padding: 1rem;
-  border: 1px solid #e5e7eb;
-  border-radius: 0.5rem;
-  min-height: 200px;
-}
-
-.html-preview {
-  background: #f5f5f5;
-  padding: 1rem;
-  border-radius: 0.5rem;
-  overflow-x: auto;
-  white-space: pre-wrap;
-  font-family: monospace;
-  font-size: 0.875rem;
-  line-height: 1.5;
+.mt-2 {
+  margin-top: 0.5rem;
 }
 
 .copy-button {

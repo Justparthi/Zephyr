@@ -155,9 +155,8 @@ const EmailTemplate = () => {
       localStorage.removeItem('editingTemplate');
     }
   }, []);
-
   const generatePreview = () => {
-    const html = sections.map(section => {
+    return sections.map(section => {
       switch (section.type) {
         case SECTION_TYPES.TITLE:
           return `<h1 style="font-family: Arial, sans-serif; color: #333;">${section.content}</h1>`;
@@ -166,32 +165,24 @@ const EmailTemplate = () => {
         case SECTION_TYPES.TEXT:
           return `<div style="font-family: Arial, sans-serif; color: #666; line-height: 1.6;">${section.content}</div>`;
         case SECTION_TYPES.LINK:
-  return `<table cellpadding="0" cellspacing="0" style="margin: 1rem 0;">
-    <tr>
-      <td>
-        <a href="${formatURL(section.url)}" 
-           style="display: inline-block; padding: 10px 20px; background-color: #007bff; 
-           color: #ffffff; text-decoration: none; border-radius: 4px; 
-           font-family: Arial, sans-serif;"
-           target="_blank" rel="noopener noreferrer">
-          ${section.content}
-        </a>
-      </td>
-    </tr>
-  </table>`;
+          return `<table cellpadding="0" cellspacing="0" style="margin: 1rem 0;">
+            <tr>
+              <td>
+                <a href="${formatURL(section.url)}" 
+                   style="display: inline-block; padding: 10px 20px; background-color: #007bff; 
+                   color: #ffffff; text-decoration: none; border-radius: 4px; 
+                   font-family: Arial, sans-serif;"
+                   target="_blank" rel="noopener noreferrer">
+                  ${section.content}
+                </a>
+              </td>
+            </tr>
+          </table>`;
         default:
           return '';
       }
     }).join('\n');
-
-    setPreviewHtml(`
-      <div style="max-width: 600px; margin: 0 auto; padding: 1rem;">
-        ${html}
-      </div>
-    `);
-    setShowPreview(true);
-};
-
+  };
 const handleSaveTemplate = async (templateData) => {
   try {
     const savedTemplates = JSON.parse(localStorage.getItem('emailTemplates') || '[]');
@@ -360,36 +351,24 @@ const handleSaveTemplate = async (templateData) => {
                 <Icon name="link" />
                 Add Link Button
               </Button>
-              <Button onClick={togglePreview} variant={showPreview ? "secondary" : "default"}>
-                <Icon name="eye" />
-                Visual Preview
-              </Button>
-              <Button onClick={toggleHtmlPreview} variant={showHtmlPreview ? "secondary" : "default"}>
-                <Icon name="code" />
-                HTML Preview
-              </Button>
-
             </div>
           </CardContent>
         </Card>
       </div>
 
-      {/* Main Content */}
-      <div className="main-content">
+      {/* Editor Section */}
+      <div className="editor-section">
         <Card className="content-card">
           <CardHeader>
-            <CardTitle>Email Template Editor</CardTitle>
+            <CardTitle>Email Editor</CardTitle>
             <div className="preview-controls">
-  <SaveTemplateButton 
-    sections={sections}
-    onSave={handleSaveTemplate}
-  />
-
+              <SaveTemplateButton 
+                sections={sections}
+                onSave={handleSaveTemplate}
+              />
             </div>
-
           </CardHeader>
           <CardContent>
-            {/* Sections List */}
             <div className="sections-list">
               {sections.map((section, index) => (
                 <div key={section.id} className="section-item">
@@ -426,46 +405,42 @@ const handleSaveTemplate = async (templateData) => {
                 </div>
               ))}
             </div>
+          </CardContent>
+        </Card>
+      </div>
 
-            {/* Preview Sections */}
-            {showPreview && (
-              <div className="preview-section">
-                <Card>
-                  <CardHeader>
-                    <CardTitle>Visual Preview</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div 
-                      dangerouslySetInnerHTML={{ __html: previewHtml }}
-                      className="preview-content"
-                    />
-                  </CardContent>
-                </Card>
-              </div>
-            )}
+      {/* Preview Section */}
+      <div className="preview-section">
+        {/* Visual Preview */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Visual Preview</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div 
+              dangerouslySetInnerHTML={{ __html: generatePreview() }}
+              className="preview-content"
+            />
+          </CardContent>
+        </Card>
 
-            {showHtmlPreview && (
-              <div className="preview-section">
-                <Card>
-                  <CardHeader>
-                    <CardTitle>HTML Preview</CardTitle>
-                    <Button 
-                      onClick={() => navigator.clipboard.writeText(generateHTML())}
-                      variant="default"
-                      className="copy-button"
-                    >
-                      <Icon name="copy" />
-                      Copy HTML
-                    </Button>
-                  </CardHeader>
-                  <CardContent>
-                    <pre className="html-preview">
-                      <code>{generateHTML()}</code>
-                    </pre>
-                  </CardContent>
-                </Card>
-              </div>
-            )}
+        {/* HTML Preview */}
+        <Card>
+          <CardHeader>
+            <CardTitle>HTML Preview</CardTitle>
+            <Button 
+              onClick={() => navigator.clipboard.writeText(generateHTML())}
+              variant="default"
+              className="copy-button"
+            >
+              <Icon name="copy" />
+              Copy HTML
+            </Button>
+          </CardHeader>
+          <CardContent>
+            <pre className="html-preview">
+              <code>{generateHTML()}</code>
+            </pre>
           </CardContent>
         </Card>
       </div>
