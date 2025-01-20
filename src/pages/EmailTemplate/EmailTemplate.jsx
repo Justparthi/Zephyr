@@ -19,8 +19,33 @@ const SECTION_TYPES = {
 };
 
 const EmailTemplate = () => {
+
+  const [sections, setSections] = useState([
+    {
+      id: 1,
+      type: SECTION_TYPES.TITLE,
+      content: 'Welcome to Our Newsletter'
+    },
+    {
+      id: 2,
+      type: SECTION_TYPES.IMAGE,
+      imageUrl: 'https://t4.ftcdn.net/jpg/02/59/98/87/360_F_259988723_FkzrqRyMP1kQk8WMkYnKT4o2Tw29d9Ki.jpg',
+      content: ''
+    },
+    {
+      id: 3,
+      type: SECTION_TYPES.TEXT,
+      content: `We're excited to share our latest updates with you! Our team has been working hard to bring you the best content and features.`
+    },
+    {
+      id: 4,
+      type: SECTION_TYPES.LINK,
+      content: 'Read More',
+      url: 'https://www.example.com'
+    }
+  ]);
     const [activeView, setActiveView] = useState('editor');
-    const [sections, setSections] = useState([]);
+    // const [sections, setSections] = useState([]);
     const [previewHtml, setPreviewHtml] = useState("");
     const [showPreview, setShowPreview] = useState(false);
     const [showHtmlPreview, setShowHtmlPreview] = useState(false);
