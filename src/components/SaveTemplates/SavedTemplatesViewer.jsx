@@ -3,6 +3,167 @@ import { Trash2, Edit, Eye, X, Download } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import './SavedTemplatesViewer.css'
 
+
+const DEFAULT_TEMPLATES = [
+  {
+    globalStyles: {
+      maxWidth: '600px',
+      backgroundColor: '#ffffff',
+      padding: '20px'
+    },
+    sections: [
+      {
+        type: 'title',
+        content: 'Welcome Newsletter',
+        styles: {
+          fontFamily: 'Arial',
+          fontSize: '24px',
+          color: '#000',
+          textAlign: 'center'
+        }
+      },
+      {
+        type: 'text',
+        content: 'Thank you for subscribing to our newsletter. Stay tuned for updates and announcements.',
+        styles: {
+          fontFamily: 'Arial',
+          fontSize: '16px',
+          color: '#333'
+        }
+      },
+      {
+        type: 'image',
+        imageUrl: 'https://t4.ftcdn.net/jpg/02/59/98/87/360_F_259988723_FkzrqRyMP1kQk8WMkYnKT4o2Tw29d9Ki.jpg',
+        styles: {
+          borderRadius: '0',
+          boxShadow: 'none'
+        }
+      },
+      {
+        type: 'link',
+        content: 'Read More',
+        url: '#',
+        styles: {
+          backgroundColor: '#007bff',
+          color: '#fff',
+          padding: '10px 20px',
+          borderRadius: '4px'
+        }
+      },
+      {
+        type: 'social_links',
+        content: [
+          { icon: 'facebook', url: 'facebook.com', label: 'Facebook' },
+          { icon: 'instagram', url: 'instagram.com', label: 'Instagram' }
+        ]
+      }
+    ]
+  },
+  {
+    globalStyles: {
+      maxWidth: '600px',
+      backgroundColor: '#ffffff',
+      padding: '20px'
+    },
+    sections: [
+      {
+        type: 'title',
+        content: 'Special Offer',
+        styles: {
+          fontFamily: 'Arial',
+          fontSize: '24px',
+          color: '#000',
+          textAlign: 'left'
+        }
+      },
+      {
+        type: 'spacer',
+        styles: {
+          height: '20px'
+        }
+      },
+      {
+        type: 'text',
+        content: 'Limited time discount on all products. Don\'t miss out!',
+        styles: {
+          fontFamily: 'Arial',
+          fontSize: '16px',
+          color: '#333'
+        }
+      },
+      {
+        type: 'divider',
+        styles: {
+          borderTop: '1px solid #ccc',
+          margin: '20px 0'
+        }
+      },
+      {
+        type: 'link',
+        content: 'Shop Now',
+        url: '#',
+        styles: {
+          backgroundColor: '#007bff',
+          color: '#fff',
+          padding: '10px 20px',
+          borderRadius: '4px'
+        }
+      }
+    ]
+  },
+  {
+    globalStyles: {
+      maxWidth: '600px',
+      backgroundColor: '#ffffff',
+      padding: '20px'
+    },
+    sections: [
+      {
+        type: 'title',
+        content: 'Tech Updates',
+        styles: {
+          fontFamily: 'Arial',
+          fontSize: '24px',
+          color: '#000',
+          textAlign: 'left'
+        }
+      },
+      {
+        type: 'text',
+        content: 'Latest updates from the tech world',
+        styles: {
+          fontFamily: 'Arial',
+          fontSize: '16px',
+          color: '#333'
+        }
+      },
+      {
+        type: 'image',
+        imageUrl: 'https://imgs.search.brave.com/5u87umTjU5MgC8yEmt_vHYxLZuejWzbcoQE6060M7hs/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/cGl4YWJheS5jb20v/cGhvdG8vMjAyMC8w/My8wNS8xNy8zNS90/ZWNoLW5ld3MtNDkw/NTAxN182NDAuanBn',
+        styles: {
+          borderRadius: '0',
+          boxShadow: 'none'
+        }
+      },
+      {
+        type: 'divider',
+        styles: {
+          borderTop: '1px solid #ccc',
+          margin: '20px 0'
+        }
+      },
+      {
+        type: 'social_links',
+        content: [
+          { icon: 'github', url: 'github.com', label: 'GitHub' },
+          { icon: 'linkedin', url: 'linkedin.com', label: 'LinkedIn' },
+          { icon: 'x', url: 'twitter.com', label: 'Twitter' }
+        ]
+      }
+    ]
+  }
+];
+
 const SOCIAL_ICONS_SVG = {
   facebook: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#1877F2" stroke="#1877F2" stroke-width="0.5">
     <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3V2z"/>
@@ -39,10 +200,16 @@ const SavedTemplatesViewer = () => {
   const [selectedTemplate, setSelectedTemplate] = useState(null);
   const [previewMode, setPreviewMode] = useState('grid');
   const navigate = useNavigate();
-
   useEffect(() => {
     const loadTemplates = () => {
-      const templates = JSON.parse(localStorage.getItem('emailTemplates') || '[]');
+      let templates = JSON.parse(localStorage.getItem('emailTemplates') || '[]');
+      
+      // If no templates exist, initialize with default templates
+      if (templates.length === 0) {
+        templates = DEFAULT_TEMPLATES;
+        localStorage.setItem('emailTemplates', JSON.stringify(templates));
+      }
+      
       setSavedTemplates(templates);
     };
 
@@ -53,6 +220,7 @@ const SavedTemplatesViewer = () => {
       window.removeEventListener('storage', loadTemplates);
     };
   }, []);
+
 
   const formatURL = (url) => {
     if (!url) return '';
