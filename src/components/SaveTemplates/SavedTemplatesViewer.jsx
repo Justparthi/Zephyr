@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Trash2, Edit, Eye, X } from 'lucide-react';
+import { Trash2, Edit, Eye, X, Download } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import './SavedTemplatesViewer.css'
 
@@ -37,7 +37,7 @@ const SOCIAL_ICONS_SVG = {
 const SavedTemplatesViewer = () => {
   const [savedTemplates, setSavedTemplates] = useState([]);
   const [selectedTemplate, setSelectedTemplate] = useState(null);
-  const [previewMode, setPreviewMode] = useState('grid'); // 'grid' or 'full'
+  const [previewMode, setPreviewMode] = useState('grid');
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -95,37 +95,36 @@ const SavedTemplatesViewer = () => {
                               border-radius: ${section.styles?.borderRadius || '4px'};
                               font-family: ${section.styles?.fontFamily || 'Arial'};">${section.content}</a>
                   </div>`;
-
-                  case 'social_links':
-                    if (!Array.isArray(section.content)) return '';
-                    return `
-                      <table cellpadding="0" cellspacing="0" style="margin: 1rem 0; width: 100%;">
-                        <tr>
-                          <td style="text-align: center;">
-                            ${section.content.map(link => {
-                              const formattedUrl = formatURL(link.url);
-                              return formattedUrl ? `
-                                <a href="${formattedUrl}" 
-                                   style="display: inline-block; margin: 0 10px; text-decoration: none; color: #333;"
-                                   target="_blank" rel="noopener noreferrer">
-                                  <table cellpadding="0" cellspacing="0">
-                                    <tr>
-                                      <td style="text-align: center;">
-                                        <div style="width: 24px; height: 24px;">
-                                          ${SOCIAL_ICONS_SVG[link.icon] || ''}
-                                        </div>
-                                        <div style="font-size: 12px; margin-top: 4px; font-family: Arial, sans-serif;">
-                                          ${link.label}
-                                        </div>
-                                      </td>
-                                    </tr>
-                                  </table>
-                                </a>
-                              ` : '';
-                            }).join('')}
-                          </td>
-                        </tr>
-                      </table>`;
+        case 'social_links':
+          if (!Array.isArray(section.content)) return '';
+          return `
+            <table cellpadding="0" cellspacing="0" style="margin: 1rem 0; width: 100%;">
+              <tr>
+                <td style="text-align: center;">
+                  ${section.content.map(link => {
+                    const formattedUrl = formatURL(link.url);
+                    return formattedUrl ? `
+                      <a href="${formattedUrl}" 
+                         style="display: inline-block; margin: 0 10px; text-decoration: none; color: #333;"
+                         target="_blank" rel="noopener noreferrer">
+                        <table cellpadding="0" cellspacing="0">
+                          <tr>
+                            <td style="text-align: center;">
+                              <div style="width: 24px; height: 24px;">
+                                ${SOCIAL_ICONS_SVG[link.icon] || ''}
+                              </div>
+                              <div style="font-size: 12px; margin-top: 4px; font-family: Arial, sans-serif;">
+                                ${link.label}
+                              </div>
+                            </td>
+                          </tr>
+                        </table>
+                      </a>
+                    ` : '';
+                  }).join('')}
+                </td>
+              </tr>
+            </table>`;
         case 'divider':
           return `<hr style="border: none; 
                            border-top: ${section.styles?.borderTop || '1px solid #ccc'}; 
@@ -147,6 +146,34 @@ const SavedTemplatesViewer = () => {
     `;
   };
 
+  const generateFullHTML = (template) => {
+    return `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Template</title>
+</head>
+<body style="margin: 0; padding: 0; background-color: #f4f4f4;">
+    ${generatePreviewHTML(template)}
+</body>
+</html>`;
+  };
+
+  const downloadTemplate = (template, index) => {
+    const htmlContent = generateFullHTML(template);
+    const blob = new Blob([htmlContent], { type: 'text/html' });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `template-${index + 1}.html`;
+    document.body.appendChild(a);
+    a.click();
+    window.URL.revokeObjectURL(url);
+    document.body.removeChild(a);
+  };
+
   const handleEditTemplate = (template) => {
     localStorage.setItem('editingTemplate', JSON.stringify(template));
     navigate('/');
@@ -161,7 +188,6 @@ const SavedTemplatesViewer = () => {
 
   return (
     <div className="templates-viewer">
-
       <div className="viewer-header">
         <h1 className="viewer-title">Saved Templates</h1>
       </div>
@@ -190,6 +216,13 @@ const SavedTemplatesViewer = () => {
                     aria-label="Edit template"
                   >
                     <Edit size={16} />
+                  </button>
+                  <button
+                    className="action-button"
+                    onClick={() => downloadTemplate(template, index)}
+                    aria-label="Download template"
+                  >
+                    <Download size={16} />
                   </button>
                   <button
                     className="action-button delete"
