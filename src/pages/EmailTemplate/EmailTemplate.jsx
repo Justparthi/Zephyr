@@ -497,7 +497,7 @@ const renderSection = (section) => {
           <div className="social-link-controls">
             <div className="flex items-center gap-2">
               {/* Platform Select */}
-              <div className="w-1/4">
+              <div className="w-1 select-option">
                 <select
                   value={link.icon}
                   onChange={(e) => updateSocialLink(section.id, index, 'icon', e.target.value)}
@@ -512,7 +512,7 @@ const renderSection = (section) => {
               </div>
               
               {/* Label Input */}
-              <div className="w-1/4">
+              <div className="w-1">
                 <Input
                   value={link.label}
                   onChange={(e) => updateSocialLink(section.id, index, 'label', e.target.value)}

@@ -203,6 +203,60 @@
   background: #fafafa;
 }
 
+/* Social links section */
+.social-links-editor {
+  width: 100%;
+  padding: 1rem;
+  background-color: #f9fafb;
+  border-radius: 0.5rem;
+}
+
+.social-link-item {
+  background-color: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.social-link-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Input row container */
+.flex.items-center.gap-2 {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* Common width for all input containers */
+.w-1,
+.flex-1 {
+  width: 100%;
+}
+
+/* Select dropdown */
+.select-option select {
+  width: 20%;
+  padding: 0.5rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.375rem;
+  background-color: white;
+}
+
+/* Delete button container */
+.shrink-0 {
+  align-self: flex-end;
+}
+
+/* Test link button */
+.w-full.button {
+  margin-top: 0.5rem;
+}
+
 .social-link-controls {
   display: flex;
   flex-direction: column;
