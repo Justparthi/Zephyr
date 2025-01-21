@@ -94,7 +94,7 @@ Contributions are welcome! If you'd like to improve this project:
 
 Found a bug or have suggestions?  
 - Open an [issue](https://github.com/Justparthi/RapidQuest/issues).  
-- Feel free to reach out via email at **your-email@example.com**.  
+- Feel free to reach out via email at **justparthiban@gmail.com**.  
 
 ---
 
