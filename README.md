@@ -1,7 +1,3 @@
-Here's a GitHub README documentation template for your **Email Template Builder** web application, built with React and Vite, and deployed on Vercel. I've incorporated emojis for main headings to make it visually appealing.
-
----
-
 # 📧 Email Template Builder
 
 Create stunning and responsive email templates with ease using the **Email Template Builder**! This web application is built with **React** and **Vite**, ensuring blazing-fast performance, and is deployed on **Vercel** for seamless accessibility.
@@ -112,7 +108,3 @@ This project is licensed under the [MIT License](LICENSE).
 
 - Thanks to the React and Vite communities for their incredible resources!  
 - Inspired by modern email template builders like BeeFree and Stripo.  
-
----
-
-Feel free to customize this README with your repository's URL, email, and other details. Let me know if you'd like further adjustments!
