@@ -65,18 +65,18 @@ const EmailTemplate = () => {
     {
       id: 1,
       type: SECTION_TYPES.TITLE,
-      content: 'Welcome to Our Newsletter'
+      content: 'Welcome to RapidQuest'
     },
     {
       id: 2,
       type: SECTION_TYPES.IMAGE,
-      imageUrl: 'https://t4.ftcdn.net/jpg/02/59/98/87/360_F_259988723_FkzrqRyMP1kQk8WMkYnKT4o2Tw29d9Ki.jpg',
+      imageUrl: 'https://cdn.pixabay.com/photo/2018/03/22/02/37/email-3249062_1280.png',
       content: ''
     },
     {
       id: 3,
       type: SECTION_TYPES.TEXT,
-      content: `We're excited to share our latest updates with you! Our team has been working hard to bring you the best content and features.`
+      content: `This application empowers users to create professional, customized email templates effortlessly.`
     },
     {
       id: 4,
