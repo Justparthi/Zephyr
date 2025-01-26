@@ -8,72 +8,64 @@ const DEFAULT_TEMPLATES = [
   {
     globalStyles: {
       maxWidth: '600px',
-      backgroundColor: '#ffffff',
-      padding: '20px'
+      backgroundColor: '#f9f9f9',
+      padding: '30px'
     },
     sections: [
       {
         type: 'title',
-        content: 'Welcome Newsletter',
+        content: 'Welcome to Our Community Newsletter',
         styles: {
           fontFamily: 'Arial',
-          fontSize: '24px',
-          color: '#000',
+          fontSize: '32px',
+          color: '#2c3e50',
           textAlign: 'center'
         }
       },
       {
         type: 'text',
-        content: 'Thank you for subscribing to our newsletter. Stay tuned for updates and announcements.',
+        content: 'Dear Valued Subscriber,\n\nWelcome to our vibrant community! We are thrilled to have you join us on this incredible journey of discovery, innovation, and connection.',
         styles: {
           fontFamily: 'Arial',
           fontSize: '16px',
-          color: '#333'
+          color: '#34495e',
+          lineHeight: '1.6'
         }
       },
       {
         type: 'image',
         imageUrl: 'https://t4.ftcdn.net/jpg/02/59/98/87/360_F_259988723_FkzrqRyMP1kQk8WMkYnKT4o2Tw29d9Ki.jpg',
         styles: {
-          borderRadius: '0',
-          boxShadow: 'none'
+          borderRadius: '10px',
+          boxShadow: '0 4px 6px rgba(0,0,0,0.1)'
         }
       },
       {
-        type: 'link',
-        content: 'Read More',
-        url: '#',
-        styles: {
-          backgroundColor: '#007bff',
-          color: '#fff',
-          padding: '10px 20px',
-          borderRadius: '4px'
-        }
-      },
-      {
-        type: 'social_links',
-        content: [
-          { icon: 'facebook', url: 'facebook.com', label: 'Facebook' },
-          { icon: 'instagram', url: 'instagram.com', label: 'Instagram' }
-        ]
-      }
-    ]
-  },
-  {
-    globalStyles: {
-      maxWidth: '600px',
-      backgroundColor: '#ffffff',
-      padding: '20px'
-    },
-    sections: [
-      {
-        type: 'title',
-        content: 'Special Offer',
+        type: 'text',
+        content: 'In this month\'s newsletter, we\'re excited to share groundbreaking updates, inspiring stories, and exclusive insights that showcase the incredible potential of our community.',
         styles: {
           fontFamily: 'Arial',
-          fontSize: '24px',
-          color: '#000',
-          textAlign: 'left'
+          fontSize: '18px',
+          color: '#2c3e50',
+          textAlign: 'center',
+          fontWeight: 'bold'
+        }
+      },
+      {
+        type: 'divider',
+        styles: {
+          borderTop: '2px solid #3498db',
+          margin: '20px 0'
+        }
+      },
+      {
+        type: 'text',
+        content: 'Highlights This Month:\n• Exclusive Interview with Industry Leader\n• Breakthrough Community Projects\n• Upcoming Virtual Events\n• Member Spotlight Series',
+        styles: {
+          fontFamily: 'Arial',
+          fontSize: '16px',
+          color: '#34495e',
+          whiteSpace: 'pre-line'
         }
       },
       {
@@ -84,30 +76,36 @@ const DEFAULT_TEMPLATES = [
       },
       {
         type: 'text',
-        content: 'Limited time discount on all products. Don\'t miss out!',
+        content: 'We are committed to bringing you the latest insights, trends, and exclusive content tailored just for you. Our team works tirelessly to curate information that matters most to our community, ensuring you stay informed, inspired, and connected.',
         styles: {
           fontFamily: 'Arial',
           fontSize: '16px',
-          color: '#333'
-        }
-      },
-      {
-        type: 'divider',
-        styles: {
-          borderTop: '1px solid #ccc',
-          margin: '20px 0'
+          color: '#2c3e50',
+          lineHeight: '1.6'
         }
       },
       {
         type: 'link',
-        content: 'Shop Now',
+        content: 'Explore More',
         url: '#',
         styles: {
-          backgroundColor: '#007bff',
+          backgroundColor: '#3498db',
           color: '#fff',
-          padding: '10px 20px',
-          borderRadius: '4px'
+          padding: '12px 24px',
+          borderRadius: '6px',
+          display: 'block',
+          textAlign: 'center',
+          fontWeight: 'bold'
         }
+      },
+      {
+        type: 'social_links',
+        content: [
+          { icon: 'facebook', url: 'facebook.com', label: 'Facebook' },
+          { icon: 'instagram', url: 'instagram.com', label: 'Instagram' },
+          { icon: 'linkedin', url: 'linkedin.com', label: 'LinkedIn' },
+          { icon: 'x', url: 'twitter.com', label: 'Twitter' }
+        ]
       }
     ]
   },
@@ -115,49 +113,197 @@ const DEFAULT_TEMPLATES = [
     globalStyles: {
       maxWidth: '600px',
       backgroundColor: '#ffffff',
-      padding: '20px'
+      padding: '30px'
     },
     sections: [
       {
         type: 'title',
-        content: 'Tech Updates',
+        content: 'Mega Summer Sale Extravaganza',
         styles: {
           fontFamily: 'Arial',
-          fontSize: '24px',
-          color: '#000',
-          textAlign: 'left'
+          fontSize: '32px',
+          color: '#e74c3c',
+          textAlign: 'center'
         }
       },
       {
         type: 'text',
-        content: 'Latest updates from the tech world',
+        content: 'Get Ready for the Biggest Discount Event of the Year!',
         styles: {
           fontFamily: 'Arial',
-          fontSize: '16px',
-          color: '#333'
+          fontSize: '22px',
+          color: '#c0392b',
+          textAlign: 'center',
+          fontStyle: 'italic'
         }
       },
       {
         type: 'image',
         imageUrl: 'https://imgs.search.brave.com/5u87umTjU5MgC8yEmt_vHYxLZuejWzbcoQE6060M7hs/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/cGl4YWJheS5jb20v/cGhvdG8vMjAyMC8w/My8wNS8xNy8zNS90/ZWNoLW5ld3MtNDkw/NTAxN182NDAuanBn',
         styles: {
-          borderRadius: '0',
-          boxShadow: 'none'
+          borderRadius: '15px',
+          boxShadow: '0 6px 12px rgba(0,0,0,0.15)'
+        }
+      },
+      {
+        type: 'text',
+        content: 'Unbelievable Discounts Across Multiple Categories:\n• Electronics: Up to 70% OFF\n• Fashion: Buy 1, Get 1 Free\n• Home Essentials: Flat 50% Discount\n• Tech Gadgets: Special Bundle Offers',
+        styles: {
+          fontFamily: 'Arial',
+          fontSize: '16px',
+          color: '#2c3e50',
+          whiteSpace: 'pre-line',
+          fontWeight: 'bold'
+        }
+      },
+      {
+        type: 'text',
+        content: 'Our biggest sale of the year is here! Enjoy massive discounts across our entire product range. Whether you\'re looking for cutting-edge tech gadgets, stylish fashion, or home essentials, we\'ve got incredible deals that will transform your shopping experience.',
+        styles: {
+          fontFamily: 'Arial',
+          fontSize: '16px',
+          color: '#34495e',
+          lineHeight: '1.6'
         }
       },
       {
         type: 'divider',
         styles: {
-          borderTop: '1px solid #ccc',
+          borderTop: '2px solid #e74c3c',
           margin: '20px 0'
+        }
+      },
+      {
+        type: 'text',
+        content: 'Sale Terms:\n• Valid from July 1st to July 31st\n• Limited Stock - First Come, First Served\n• Online and In-Store Offers\n• Additional Cashback for Loyalty Members',
+        styles: {
+          fontFamily: 'Arial',
+          fontSize: '14px',
+          color: '#7f8c8d',
+          whiteSpace: 'pre-line',
+          fontStyle: 'italic'
+        }
+      },
+      {
+        type: 'link',
+        content: 'Start Shopping Now',
+        url: '#',
+        styles: {
+          backgroundColor: '#e74c3c',
+          color: '#fff',
+          padding: '12px 24px',
+          borderRadius: '6px',
+          display: 'block',
+          textAlign: 'center',
+          fontWeight: 'bold'
         }
       },
       {
         type: 'social_links',
         content: [
-          { icon: 'github', url: 'github.com', label: 'GitHub' },
           { icon: 'linkedin', url: 'linkedin.com', label: 'LinkedIn' },
-          { icon: 'x', url: 'twitter.com', label: 'Twitter' }
+          { icon: 'x', url: 'twitter.com', label: 'Twitter' },
+          { icon: 'instagram', url: 'instagram.com', label: 'Instagram' }
+        ]
+      }
+    ]
+  },
+  {
+    globalStyles: {
+      maxWidth: '600px',
+      backgroundColor: '#f8f9fa',
+      padding: '30px'
+    },
+    sections: [
+      {
+        type: 'title',
+        content: 'Holistic Digital Wellness Summit',
+        styles: {
+          fontFamily: 'Arial',
+          fontSize: '32px',
+          color: '#2980b9',
+          textAlign: 'center'
+        }
+      },
+      {
+        type: 'text',
+        content: 'Transforming Mental Health in the Digital Age',
+        styles: {
+          fontFamily: 'Arial',
+          fontSize: '22px',
+          color: '#34495e',
+          textAlign: 'center',
+          fontStyle: 'italic'
+        }
+      },
+      {
+        type: 'image',
+        imageUrl: 'https://imgs.search.brave.com/l56RjPYgBdKMiIMQpQUsce-CJKWWWkR081B_C7R0sz4/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTQ2/NTUxMzY5MC9waG90/by8zZGNnLW9mLWJ1/c2luZXNzLXdpdGgt/dGhlLWltYWdlLW9m/LXJlLXNraWxsaW5n/LmpwZz9zPTYxMng2/MTImdz0wJms9MjAm/Yz1peHc5eUVyd19l/dUFzeFMtTXNPOHBv/OGJnQVo5SXEyQjNj/UDNkN05rTm9NPQ',
+        styles: {
+          borderRadius: '15px',
+          boxShadow: '0 6px 12px rgba(0,0,0,0.15)'
+        }
+      },
+      {
+        type: 'text',
+        content: 'Comprehensive Workshop Modules:\n• Advanced Stress Management Techniques\n• Mindful Technology Engagement\n• Digital Detox Strategies\n• Building Psychological Resilience\n• Workplace Mental Health Foundations',
+        styles: {
+          fontFamily: 'Arial',
+          fontSize: '16px',
+          color: '#2c3e50',
+          whiteSpace: 'pre-line',
+          fontWeight: 'bold'
+        }
+      },
+      {
+        type: 'text',
+        content: 'Join our groundbreaking online summit designed to empower professionals with cutting-edge strategies for maintaining mental well-being in an increasingly digital world. Led by renowned psychologists, tech experts, and wellness coaches, this immersive experience will provide practical, actionable insights.',
+        styles: {
+          fontFamily: 'Arial',
+          fontSize: '16px',
+          color: '#34495e',
+          lineHeight: '1.6'
+        }
+      },
+      {
+        type: 'divider',
+        styles: {
+          borderTop: '2px solid #2980b9',
+          margin: '20px 0'
+        }
+      },
+      {
+        type: 'text',
+        content: 'Event Details:\n• 4-Week Interactive Program\n• Live Expert-Led Sessions\n• Personalized Wellness Assessments\n• Exclusive Resource Library\n• Community Support Network',
+        styles: {
+          fontFamily: 'Arial',
+          fontSize: '14px',
+          color: '#7f8c8d',
+          whiteSpace: 'pre-line',
+          fontStyle: 'italic'
+        }
+      },
+      {
+        type: 'link',
+        content: 'Register for Summit',
+        url: '#',
+        styles: {
+          backgroundColor: '#2980b9',
+          color: '#fff',
+          padding: '12px 24px',
+          borderRadius: '6px',
+          display: 'block',
+          textAlign: 'center',
+          fontWeight: 'bold'
+        }
+      },
+      {
+        type: 'social_links',
+        content: [
+          { icon: 'linkedin', url: 'linkedin.com', label: 'LinkedIn' },
+          { icon: 'x', url: 'twitter.com', label: 'Twitter' },
+          { icon: 'instagram', url: 'instagram.com', label: 'Instagram' },
+          { icon: 'youtube', url: 'youtube.com', label: 'YouTube' }
         ]
       }
     ]
