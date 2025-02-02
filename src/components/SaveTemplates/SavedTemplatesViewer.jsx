@@ -7,302 +7,323 @@ import './SavedTemplatesViewer.css'
 const DEFAULT_TEMPLATES = [
   {
     globalStyles: {
-      maxWidth: '600px',
-      backgroundColor: '#f9f9f9',
-      padding: '30px'
+      maxWidth: '800px',
+      backgroundColor: '#f8fafc',
+      padding: '40px'
     },
     sections: [
       {
         type: 'title',
-        content: 'Welcome to Our Community Newsletter',
+        content: 'Annual Impact Report 2025',
         styles: {
           fontFamily: 'Arial',
-          fontSize: '32px',
-          color: '#2c3e50',
+          fontSize: '36px',
+          color: '#1e3a8a',
           textAlign: 'center'
         }
       },
       {
         type: 'text',
-        content: 'Dear Valued Subscriber,\n\nWelcome to our vibrant community! We are thrilled to have you join us on this incredible journey of discovery, innovation, and connection.',
+        content: 'Transforming Lives Through Innovation and Compassion',
         styles: {
           fontFamily: 'Arial',
-          fontSize: '16px',
-          color: '#34495e',
-          lineHeight: '1.6'
+          fontSize: '24px',
+          color: '#2563eb',
+          textAlign: 'center',
+          fontStyle: 'italic'
         }
       },
       {
         type: 'image',
-        imageUrl: 'https://t4.ftcdn.net/jpg/02/59/98/87/360_F_259988723_FkzrqRyMP1kQk8WMkYnKT4o2Tw29d9Ki.jpg',
+        imageUrl: 'https://imgs.search.brave.com/khfCkdaUYeJhXLS2Po9jQh4UgQzba-fyv7u96lOEiCo/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9naG9z/dC1pbWFnZXMuY2hh/bWFpbGVvbi5pby8y/MDI0LzA3L0Vzc2Vu/dGlhbC1UaXBzLWZv/ci1NYW5hZ2luZy1Z/b3VyLUVtYWlsLUNy/ZWF0aW9uLVdvcmtm/bG93LnBuZw',
         styles: {
           borderRadius: '10px',
-          boxShadow: '0 4px 6px rgba(0,0,0,0.1)'
+          boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
+          width: '100%',
+          marginBottom: '30px'
         }
       },
       {
         type: 'text',
-        content: 'In this month\'s newsletter, we\'re excited to share groundbreaking updates, inspiring stories, and exclusive insights that showcase the incredible potential of our community.',
+        content: 'Dear Stakeholders,\n\nWe are proud to present our 2025 Annual Impact Report, showcasing a year of remarkable achievements and meaningful progress in our mission to create positive change in communities worldwide. This report reflects our dedication to transparency, innovation, and sustainable impact.',
         styles: {
           fontFamily: 'Arial',
-          fontSize: '18px',
-          color: '#2c3e50',
-          textAlign: 'center',
-          fontWeight: 'bold'
+          fontSize: '16px',
+          color: '#334155',
+          lineHeight: '1.8',
+          marginBottom: '30px'
+        }
+      },
+      {
+        type: 'title',
+        content: 'Key Impact Metrics',
+        styles: {
+          fontFamily: 'Arial',
+          fontSize: '28px',
+          color: '#1e3a8a',
+          marginBottom: '20px'
+        }
+      },
+      {
+        type: 'text',
+        content: 'Community Development:\n• 50,000+ individuals served through educational programs\n• 120 community centers established worldwide\n• $25M invested in local infrastructure\n• 85% program completion rate\n\nHealthcare Initiatives:\n• 200,000+ medical consultations provided\n• 15 mobile health clinics launched\n• 95% vaccination program success rate\n• 30 new healthcare facilities built',
+        styles: {
+          fontFamily: 'Arial',
+          fontSize: '16px',
+          color: '#334155',
+          whiteSpace: 'pre-line',
+          lineHeight: '1.8'
         }
       },
       {
         type: 'divider',
         styles: {
-          borderTop: '2px solid #3498db',
-          margin: '20px 0'
+          borderTop: '2px solid #e2e8f0',
+          margin: '30px 0'
+        }
+      },
+      {
+        type: 'title',
+        content: 'Financial Overview',
+        styles: {
+          fontFamily: 'Arial',
+          fontSize: '28px',
+          color: '#1e3a8a'
         }
       },
       {
         type: 'text',
-        content: 'Highlights This Month:\n• Exclusive Interview with Industry Leader\n• Breakthrough Community Projects\n• Upcoming Virtual Events\n• Member Spotlight Series',
+        content: 'Resource Allocation:\n• Program Services: 75%\n• Administrative: 15%\n• Fundraising: 10%\n\nFunding Sources:\n• Government Grants: $45M\n• Private Donations: $30M\n• Corporate Partnerships: $25M\n• Investment Income: $10M',
         styles: {
           fontFamily: 'Arial',
           fontSize: '16px',
-          color: '#34495e',
-          whiteSpace: 'pre-line'
+          color: '#334155',
+          whiteSpace: 'pre-line',
+          lineHeight: '1.8'
         }
       },
       {
-        type: 'spacer',
+        type: 'divider',
         styles: {
-          height: '20px'
+          borderTop: '2px solid #e2e8f0',
+          margin: '30px 0'
+        }
+      },
+      {
+        type: 'title',
+        content: 'Looking Ahead: 2026 Strategic Initiatives',
+        styles: {
+          fontFamily: 'Arial',
+          fontSize: '28px',
+          color: '#1e3a8a'
         }
       },
       {
         type: 'text',
-        content: 'We are committed to bringing you the latest insights, trends, and exclusive content tailored just for you. Our team works tirelessly to curate information that matters most to our community, ensuring you stay informed, inspired, and connected.',
+        content: '1. Global Expansion\n• Launch operations in 10 new countries\n• Establish 50 additional community centers\n• Develop cross-border partnership networks\n\n2. Technology Integration\n• Implement AI-driven program assessment\n• Launch mobile health monitoring platforms\n• Develop virtual learning environments\n\n3. Sustainability Focus\n• Achieve carbon neutrality in all operations\n• Implement renewable energy in 100% of facilities\n• Launch environmental education programs',
         styles: {
           fontFamily: 'Arial',
           fontSize: '16px',
-          color: '#2c3e50',
-          lineHeight: '1.6'
+          color: '#334155',
+          whiteSpace: 'pre-line',
+          lineHeight: '1.8'
         }
       },
       {
         type: 'link',
-        content: 'Explore More',
+        content: 'Download Complete Report',
         url: '#',
         styles: {
-          backgroundColor: '#3498db',
-          color: '#fff',
-          padding: '12px 24px',
+          backgroundColor: '#1e3a8a',
+          color: '#ffffff',
+          padding: '15px 30px',
           borderRadius: '6px',
           display: 'block',
           textAlign: 'center',
-          fontWeight: 'bold'
+          fontWeight: 'bold',
+          margin: '30px auto',
+          maxWidth: '250px'
+        }
+      },
+      {
+        type: 'text',
+        content: 'With gratitude,\n\nDr. Sarah Mitchell\nChief Executive Officer\nGlobal Impact Initiative',
+        styles: {
+          fontFamily: 'Arial',
+          fontSize: '16px',
+          color: '#334155',
+          whiteSpace: 'pre-line',
+          textAlign: 'left',
+          marginTop: '30px'
         }
       },
       {
         type: 'social_links',
         content: [
+          { icon: 'linkedin', url: 'linkedin.com', label: 'LinkedIn' },
+          { icon: 'x', url: 'twitter.com', label: 'Twitter' },
           { icon: 'facebook', url: 'facebook.com', label: 'Facebook' },
-          { icon: 'instagram', url: 'instagram.com', label: 'Instagram' },
-          { icon: 'linkedin', url: 'linkedin.com', label: 'LinkedIn' },
-          { icon: 'x', url: 'twitter.com', label: 'Twitter' }
+          { icon: 'youtube', url: 'youtube.com', label: 'YouTube' }
         ]
       }
     ]
   },
   {
     globalStyles: {
-      maxWidth: '600px',
-      backgroundColor: '#ffffff',
-      padding: '30px'
+      maxWidth: '800px',
+      backgroundColor: '#fffbeb',
+      padding: '40px'
     },
     sections: [
       {
         type: 'title',
-        content: 'Mega Summer Sale Extravaganza',
+        content: 'Culinary Master Class Series',
         styles: {
           fontFamily: 'Arial',
-          fontSize: '32px',
-          color: '#e74c3c',
+          fontSize: '36px',
+          color: '#92400e',
           textAlign: 'center'
         }
       },
       {
         type: 'text',
-        content: 'Get Ready for the Biggest Discount Event of the Year!',
+        content: 'A Journey Through Global Cuisines with Chef Maria Rodriguez',
         styles: {
           fontFamily: 'Arial',
-          fontSize: '22px',
-          color: '#c0392b',
+          fontSize: '24px',
+          color: '#b45309',
           textAlign: 'center',
           fontStyle: 'italic'
         }
       },
       {
         type: 'image',
-        imageUrl: 'https://imgs.search.brave.com/5u87umTjU5MgC8yEmt_vHYxLZuejWzbcoQE6060M7hs/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/cGl4YWJheS5jb20v/cGhvdG8vMjAyMC8w/My8wNS8xNy8zNS90/ZWNoLW5ld3MtNDkw/NTAxN182NDAuanBn',
+        imageUrl: 'https://imgs.search.brave.com/vrGahSkjmswhaaR2vFNTuhb9_B3T00RXk4kEZ5BCvVA/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTI5/NzExMjQ5MC9waG90/by9lbWFpbC1tYXJr/ZXRpbmctYW5kLW5l/d3NsZXR0ZXItY29u/Y2VwdC1kaXJlY3Qt/ZW1haWwtc2VuZGlu/Zy1mb3ItY29tcGFu/eS5qcGc_cz02MTJ4/NjEyJnc9MCZrPTIw/JmM9OC0yTjg5dFNP/eVVVcFJtcE9Ld0I3/M1RHQng4NkEzX2VV/UkN4RmJoT0NLcz0',
         styles: {
           borderRadius: '15px',
-          boxShadow: '0 6px 12px rgba(0,0,0,0.15)'
+          boxShadow: '0 6px 12px rgba(146,64,14,0.1)',
+          width: '100%',
+          marginBottom: '30px'
         }
       },
       {
         type: 'text',
-        content: 'Unbelievable Discounts Across Multiple Categories:\n• Electronics: Up to 70% OFF\n• Fashion: Buy 1, Get 1 Free\n• Home Essentials: Flat 50% Discount\n• Tech Gadgets: Special Bundle Offers',
+        content: 'Embark on an extraordinary culinary adventure with our comprehensive master class series. Join celebrated Chef Maria Rodriguez as she unveils the secrets of global cuisines, advanced cooking techniques, and the art of flavor composition.',
         styles: {
           fontFamily: 'Arial',
           fontSize: '16px',
-          color: '#2c3e50',
-          whiteSpace: 'pre-line',
-          fontWeight: 'bold'
+          color: '#78350f',
+          lineHeight: '1.8',
+          marginBottom: '30px'
         }
       },
-      {
-        type: 'text',
-        content: 'Our biggest sale of the year is here! Enjoy massive discounts across our entire product range. Whether you\'re looking for cutting-edge tech gadgets, stylish fashion, or home essentials, we\'ve got incredible deals that will transform your shopping experience.',
-        styles: {
-          fontFamily: 'Arial',
-          fontSize: '16px',
-          color: '#34495e',
-          lineHeight: '1.6'
-        }
-      },
-      {
-        type: 'divider',
-        styles: {
-          borderTop: '2px solid #e74c3c',
-          margin: '20px 0'
-        }
-      },
-      {
-        type: 'text',
-        content: 'Sale Terms:\n• Valid from July 1st to July 31st\n• Limited Stock - First Come, First Served\n• Online and In-Store Offers\n• Additional Cashback for Loyalty Members',
-        styles: {
-          fontFamily: 'Arial',
-          fontSize: '14px',
-          color: '#7f8c8d',
-          whiteSpace: 'pre-line',
-          fontStyle: 'italic'
-        }
-      },
-      {
-        type: 'link',
-        content: 'Start Shopping Now',
-        url: '#',
-        styles: {
-          backgroundColor: '#e74c3c',
-          color: '#fff',
-          padding: '12px 24px',
-          borderRadius: '6px',
-          display: 'block',
-          textAlign: 'center',
-          fontWeight: 'bold'
-        }
-      },
-      {
-        type: 'social_links',
-        content: [
-          { icon: 'linkedin', url: 'linkedin.com', label: 'LinkedIn' },
-          { icon: 'x', url: 'twitter.com', label: 'Twitter' },
-          { icon: 'instagram', url: 'instagram.com', label: 'Instagram' }
-        ]
-      }
-    ]
-  },
-  {
-    globalStyles: {
-      maxWidth: '600px',
-      backgroundColor: '#f8f9fa',
-      padding: '30px'
-    },
-    sections: [
       {
         type: 'title',
-        content: 'Holistic Digital Wellness Summit',
+        content: 'Course Curriculum',
         styles: {
           fontFamily: 'Arial',
-          fontSize: '32px',
-          color: '#2980b9',
-          textAlign: 'center'
+          fontSize: '28px',
+          color: '#92400e'
         }
       },
       {
         type: 'text',
-        content: 'Transforming Mental Health in the Digital Age',
-        styles: {
-          fontFamily: 'Arial',
-          fontSize: '22px',
-          color: '#34495e',
-          textAlign: 'center',
-          fontStyle: 'italic'
-        }
-      },
-      {
-        type: 'image',
-        imageUrl: 'https://imgs.search.brave.com/l56RjPYgBdKMiIMQpQUsce-CJKWWWkR081B_C7R0sz4/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTQ2/NTUxMzY5MC9waG90/by8zZGNnLW9mLWJ1/c2luZXNzLXdpdGgt/dGhlLWltYWdlLW9m/LXJlLXNraWxsaW5n/LmpwZz9zPTYxMng2/MTImdz0wJms9MjAm/Yz1peHc5eUVyd19l/dUFzeFMtTXNPOHBv/OGJnQVo5SXEyQjNj/UDNkN05rTm9NPQ',
-        styles: {
-          borderRadius: '15px',
-          boxShadow: '0 6px 12px rgba(0,0,0,0.15)'
-        }
-      },
-      {
-        type: 'text',
-        content: 'Comprehensive Workshop Modules:\n• Advanced Stress Management Techniques\n• Mindful Technology Engagement\n• Digital Detox Strategies\n• Building Psychological Resilience\n• Workplace Mental Health Foundations',
+        content: 'Module 1: Foundations of Global Cuisine\n• Classical French Techniques\n• Italian Pasta Mastery\n• Asian Flavor Profiles\n• Mediterranean Essentials\n\nModule 2: Advanced Cooking Methods\n• Sous Vide Perfection\n• Smoking and Curing\n• Fermentation Techniques\n• Modern Plating Design',
         styles: {
           fontFamily: 'Arial',
           fontSize: '16px',
-          color: '#2c3e50',
+          color: '#78350f',
           whiteSpace: 'pre-line',
-          fontWeight: 'bold'
-        }
-      },
-      {
-        type: 'text',
-        content: 'Join our groundbreaking online summit designed to empower professionals with cutting-edge strategies for maintaining mental well-being in an increasingly digital world. Led by renowned psychologists, tech experts, and wellness coaches, this immersive experience will provide practical, actionable insights.',
-        styles: {
-          fontFamily: 'Arial',
-          fontSize: '16px',
-          color: '#34495e',
-          lineHeight: '1.6'
+          lineHeight: '1.8'
         }
       },
       {
         type: 'divider',
         styles: {
-          borderTop: '2px solid #2980b9',
-          margin: '20px 0'
+          borderTop: '2px solid #92400e',
+          margin: '30px 0'
+        }
+      },
+      {
+        type: 'title',
+        content: 'What You\'ll Learn',
+        styles: {
+          fontFamily: 'Arial',
+          fontSize: '28px',
+          color: '#92400e'
         }
       },
       {
         type: 'text',
-        content: 'Event Details:\n• 4-Week Interactive Program\n• Live Expert-Led Sessions\n• Personalized Wellness Assessments\n• Exclusive Resource Library\n• Community Support Network',
+        content: 'Professional Skills:\n• Knife techniques and kitchen efficiency\n• Menu development and food costing\n• Wine pairing fundamentals\n• Kitchen management essentials\n\nCulinary Innovation:\n• Modern gastronomy techniques\n• Plant-based cuisine development\n• Sustainable cooking practices\n• Artisanal bread making',
         styles: {
           fontFamily: 'Arial',
-          fontSize: '14px',
-          color: '#7f8c8d',
+          fontSize: '16px',
+          color: '#78350f',
           whiteSpace: 'pre-line',
-          fontStyle: 'italic'
+          lineHeight: '1.8'
+        }
+      },
+      {
+        type: 'divider',
+        styles: {
+          borderTop: '2px solid #92400e',
+          margin: '30px 0'
+        }
+      },
+      {
+        type: 'title',
+        content: 'Course Details',
+        styles: {
+          fontFamily: 'Arial',
+          fontSize: '28px',
+          color: '#92400e'
+        }
+      },
+      {
+        type: 'text',
+        content: 'Program Structure:\n• 12 weeks of intensive training\n• 24 hands-on cooking sessions\n• 6 live Q&A sessions with Chef Maria\n• Access to exclusive recipe collection\n\nBonuses Include:\n• Digital recipe handbook\n• Kitchen equipment guide\n• Lifetime access to course updates\n• Private community membership',
+        styles: {
+          fontFamily: 'Arial',
+          fontSize: '16px',
+          color: '#78350f',
+          whiteSpace: 'pre-line',
+          lineHeight: '1.8'
         }
       },
       {
         type: 'link',
-        content: 'Register for Summit',
+        content: 'Enroll Now - Limited Spots Available',
         url: '#',
         styles: {
-          backgroundColor: '#2980b9',
-          color: '#fff',
-          padding: '12px 24px',
+          backgroundColor: '#92400e',
+          color: '#ffffff',
+          padding: '15px 30px',
           borderRadius: '6px',
           display: 'block',
           textAlign: 'center',
-          fontWeight: 'bold'
+          fontWeight: 'bold',
+          margin: '30px auto',
+          maxWidth: '300px'
+        }
+      },
+      {
+        type: 'text',
+        content: 'For inquiries:\nEmail: masterclass@culinary.com\nPhone: (555) 123-4567',
+        styles: {
+          fontFamily: 'Arial',
+          fontSize: '16px',
+          color: '#78350f',
+          whiteSpace: 'pre-line',
+          textAlign: 'center',
+          marginTop: '30px'
         }
       },
       {
         type: 'social_links',
         content: [
-          { icon: 'linkedin', url: 'linkedin.com', label: 'LinkedIn' },
-          { icon: 'x', url: 'twitter.com', label: 'Twitter' },
           { icon: 'instagram', url: 'instagram.com', label: 'Instagram' },
+          { icon: 'facebook', url: 'facebook.com', label: 'Facebook' },
           { icon: 'youtube', url: 'youtube.com', label: 'YouTube' }
         ]
       }
