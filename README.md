@@ -104,7 +104,3 @@ This project is licensed under the [MIT License](LICENSE).
 
 ---
 
-## 🌈 Acknowledgments
-
-- Thanks to the React and Vite communities for their incredible resources!  
-- Inspired by modern email template builders like BeeFree and Stripo.  
