@@ -11,15 +11,15 @@ const Navigation = () => {
   return (
     <nav className="navigation">
       <div className="nav-container">
-        <h1 className="nav-title">Email Template Builder</h1>
+        <h1 className="nav-title">Emplate</h1>
         <div className="nav-buttons">
-          <Link to="/" className="button">
-            <Mail />
-            Editor
+          <Link to="/" className="nav-button">
+            <Mail className="nav-icon" />
+            <span>Editor</span>
           </Link>
-          <Link to="/saved" className="button">
-            <Save />
-            Saved Templates
+          <Link to="/saved" className="nav-button">
+            <Save className="nav-icon" />
+            <span>Saved Templates</span>
           </Link>
         </div>
       </div>
