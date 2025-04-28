@@ -5,6 +5,7 @@ import { Mail, Save } from 'lucide-react';
 import EmailTemplate from './pages/EmailTemplate/EmailTemplate';
 import SavedTemplatesViewer from './components/SaveTemplates/SavedTemplatesViewer';
 import './App.css';
+import Hero from './pages/Landing page/Hero';
 
 const Navigation = () => {
   return (
@@ -33,7 +34,7 @@ const App = () => {
         <Navigation />
         <main className="main-content">
           <Routes>
-            <Route path="/" element={<EmailTemplate />} />
+            <Route path="/" element={<Hero />} />
             <Route path="/editor" element={<EmailTemplate />} />
             <Route path="/saved" element={<SavedTemplatesViewer />} />
           </Routes>
