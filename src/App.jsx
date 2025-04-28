@@ -34,6 +34,7 @@ const App = () => {
         <main className="main-content">
           <Routes>
             <Route path="/" element={<EmailTemplate />} />
+            <Route path="/editor" element={<EmailTemplate />} />
             <Route path="/saved" element={<SavedTemplatesViewer />} />
           </Routes>
         </main>
