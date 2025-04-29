@@ -36,7 +36,7 @@ const App = () => {
         <Navigation />
         <main className="main-content">
           <Routes>
-            <Route path="/panda" element={ <Frontpage /> } />
+            <Route path="/" element={ <Frontpage /> } />
             <Route path="/editor" element={<EmailTemplate />} />
             <Route path="/saved" element={<SavedTemplatesViewer />} />
           </Routes>
