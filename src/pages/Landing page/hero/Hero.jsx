@@ -38,19 +38,27 @@ const Hero = () => {
           <div className="image-showcase">
             <div className="main-image">
               <img 
-                src="https://media.istockphoto.com/id/1559523525/photo/business-e-mail-communication-and-digital-marketing-businessman-holding-mobile-and-touching.jpg?s=2048x2048&w=is&k=20&c=YENswPaz0duzEp6mcSHgnMVarAQLW8dXQ-OmtLgTMS4=" 
-                alt="Business person using email marketing on mobile device" 
+                src="https://imgs.search.brave.com/mbILlkTDinAHNrOwGL-DuqR-xfEcjbYy1tgTivcRDBY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9naG9z/dC1pbWFnZXMuY2hh/bWFpbGVvbi5pby8y/MDI0LzA3L0Vzc2Vu/dGlhbC1UaXBzLWZv/ci1NYW5hZ2luZy1Z/b3VyLUVtYWlsLUNy/ZWF0aW9uLVdvcmtm/bG93LnBuZw" 
+                alt="Business person using email marketing platform" 
                 className="primary-image"
               />
             </div>
-            <div className="secondary-image">
+            <div className="secondary-image top-image">
               <img 
-                src="http://media.istockphoto.com/id/1401461127/photo/hand-of-businessman-using-smartphone-for-email-with-notification-alert.jpg?s=2048x2048&w=is&k=20&c=QfXjapMmC-0jjlDCZgHBDJqESCUgGmQOlQeHl4zwg_w=" 
-                alt="Hand holding smartphone with email notification" 
+                src="https://imgs.search.brave.com/bIYlbABXFKyzpdgN1TXSDVtKiuU7aR5m8Io0U6n7Nn8/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvNDgy/ODU5MDY1L3Bob3Rv/L2VsZWN0cm9uaWMt/bWFpbGJveC13aXRo/LWVudmVsb3Blcy5q/cGc_cz02MTJ4NjEy/Jnc9MCZrPTIwJmM9/MGE4RFhlS0d3VURz/eVdodnVvMzQ0c25m/U1dBLU5JQ1ZxNjZ5/eExlZ0FqUT0" 
+                alt="Email template example" 
+                className="overlay-image"
+              />
+            </div>
+            <div className="secondary-image bottom-image">
+              <img 
+                src="https://imgs.search.brave.com/oChmrKG-SvCtbS6Hy3AAlg5jDusdBD7qisH74cub3pU/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvOTI4/ODM4NjcvcGhvdG8v/YmxhY2stYW5kLWJs/dWUtZGlnaXRhbC1i/b2FyZC13aXRoLWUt/bWFpbC1pY29ucy1i/YWNrZ3JvdW5kLmpw/Zz9zPTYxMng2MTIm/dz0wJms9MjAmYz00/RlhBOUh4QVE5Rl9t/eGxlUkVxYUlXamd1/VUowVWk4SzFiMDBD/RkFYdFlVPQ" 
+                alt="Analytics dashboard for email campaigns" 
                 className="overlay-image"
               />
             </div>
           </div>
+         
           
           <div className="background-gradient"></div>
         </div>
