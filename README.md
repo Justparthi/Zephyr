@@ -1,4 +1,4 @@
-# 📧 Email Template Builder
+# 📧 Zephyr 
 
 Create stunning and responsive email templates with ease using the **Email Template Builder**! This web application is built with **React** and **Vite**, ensuring blazing-fast performance, and is deployed on **Vercel** for seamless accessibility.
 
