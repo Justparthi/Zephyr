@@ -39,7 +39,7 @@ const About = () => {
           <div className="about-visual">
             <div className="about-image-container">
               <div className="about-image main-about-image">
-                <img src="/api/placeholder/450/300" alt="Team working on email templates" />
+                <img src="https://imgs.search.brave.com/9N49OYPU9SLeJwwgyP9GqHtcjqbfhDUVlYbpFT_m5m0/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTQ1/MDIyMDI3My92ZWN0/b3IvZW1haWwtc2Vy/dmljZS13aXRoLWNv/cnJlc3BvbmRlbmNl/LWRlbGl2ZXJ5LWVs/ZWN0cm9uaWMtbWFp/bC1tZXNzYWdlLWFu/ZC1idXNpbmVzcy1t/YXJrZXRpbmctaW4u/anBnP3M9NjEyeDYx/MiZ3PTAmaz0yMCZj/PS1GU3JSU3hvRmJv/OGJyZUt6QXQtWlM5/WmpORWU3cllETDMw/QVkzV3Q5Umc9" alt="Team working on email templates" />
                 <div className="image-caption">Our design team collaborating</div>
               </div>
               <div className="floating-stat stat-one">
