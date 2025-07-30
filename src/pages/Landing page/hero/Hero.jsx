@@ -13,8 +13,8 @@ const Hero = () => {
             The all-in-one platform that makes email design simple, fast, and accessible to everyone—no coding required.
           </p>
           <div className="hero-cta">
-            <button className="primary-button">Start Building for Free</button>
-            <button className="secondary-button">View Templates</button>
+            <button className="primary-button" href="/editor">Start Building for Free</button>
+            <button className="secondary-button" href="/saved">View Templates</button>
           </div>
           <div className="hero-stats">
             <div className="stat-item">
