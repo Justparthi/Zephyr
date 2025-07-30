@@ -15,7 +15,7 @@ const Navigation = () => {
       <div className="nav-container">
         <h1 className="nav-title">Emplate</h1>
         <div className="nav-buttons">
-          <Link to="/" className="nav-button">
+          <Link to="/editor" className="nav-button">
             <Mail className="nav-icon" />
             <span>Editor</span>
           </Link>
